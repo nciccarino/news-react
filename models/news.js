@@ -12,6 +12,9 @@ var NewsSchema = new Schema({
   },
   url: {
   	type: String
+  },
+  notes: {
+  	type: String
   }
 });
 
