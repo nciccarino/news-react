@@ -21,19 +21,25 @@ class Search extends Component {
 		// 1) get search parameters
 		// 2) make request to NYT with search parameters
 		// 3) update the state.searchResults with response from NYT
-			request.get({
-			  url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
-			  qs: {
-			    'api-key': "b9f91d369ff59547cd47b931d8cbc56b:0:74623931",
-			    'q': topic,
-			    'begin_date': startDate, 
-			    'end_date': endDate
+		request.get({
+			url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
+			qs: {
+			  'api-key': "b9f91d369ff59547cd47b931d8cbc56b:0:74623931",
+			  'q': topic,
+			  'begin_date': startDate, 
+			  'end_date': endDate
 		  },
 		}, function(err, response, body) {
 		  body = JSON.parse(body);
 		  console.log(body);
-		  bodyArray.push(body); 
+		  bodyArray.push(body);
+		  //need to set state somewhere after this 
 		})
+
+		// this.setState({
+		// 	searchResults: bodyArray
+		// })
+		// console.log(this.state)
 
 	}
 
