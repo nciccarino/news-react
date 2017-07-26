@@ -15,6 +15,9 @@ var NewsSchema = new Schema({
   },
   notes: {
   	type: String
+  }, 
+  saved: {
+  	type: Boolean 
   }
 });
 

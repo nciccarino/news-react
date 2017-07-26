@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+// import request from 'request'
 import App from './App'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
