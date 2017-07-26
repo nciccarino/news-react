@@ -10,8 +10,7 @@
     "morgan": "^1.8.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.2",
-    "request": "^2.81.0"
+    "react-router-dom": "^4.1.2"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"

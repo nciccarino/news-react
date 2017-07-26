@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import request from 'request'
+import axios from 'axios'
 import '../App.css'
 import Main from './Main.jsx'
 import helpers from "../utils/helpers.js"
@@ -14,32 +14,33 @@ class Search extends Component {
 
 	makeRequest = (topic, startDate, endDate) => {
 
-		var bodyArray = []; 
+		// var bodyArray = []; 
 
 		console.log('MAKE REQUEST FUNCTION:')
 		console.log(topic)
 		// 1) get search parameters
 		// 2) make request to NYT with search parameters
 		// 3) update the state.searchResults with response from NYT
-		request.get({
-			url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
-			qs: {
-			  'api-key': "b9f91d369ff59547cd47b931d8cbc56b:0:74623931",
+		axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
+			params: {
+			  'api-key': "28b89b8baced4c74acdd7abdb5737fa9",
 			  'q': topic,
 			  'begin_date': startDate, 
 			  'end_date': endDate
-		  },
-		}, function(err, response, body) {
-		  body = JSON.parse(body);
-		  console.log(body);
-		  bodyArray.push(body);
-		  //need to set state somewhere after this 
-		})
+		  }
+		}).then(function(response) {
+			console.log(response) 
 
-		// this.setState({
-		// 	searchResults: bodyArray
-		// })
-		// console.log(this.state)
+			this.setState({
+				searchResults: [response.data.response.docs[0],
+												response.data.response.docs[1],
+												response.data.response.docs[2],
+												response.data.response.docs[3], 
+												response.data.response.docs[4]
+											]
+			})
+
+		}.bind(this))
 
 	}
 
